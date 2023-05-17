@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simulation Results</title>
+  </head>
+  <body>
+    <h1>Simulation Results</h1>
+
+    <h2>Sales</h2>
+    <table>
+      <tr>
+        <th>Month</th>
+        <th>Product 1</th>
+        <th>Product 2</th>
+        <th>Product 3</th>
+        <th>Total</th>
+      </tr>
+      {% for month in simulation_duration_range %}
+        <tr>
+          <td>{{ month }}</td>
+          <td>{{ sales['Product 1'] }}</td>
+          <td>{{ sales['Product 2'] }}</td>
+          <td>{{ sales['Product 3'] }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+
+    <h2>Demand</h2>
+    <table>
+      <tr>
+        <th>Month</th>
+        <th>Product 1</th>
+        <th>Product 2</th>
+        <th>Product 3</th>
+      </tr>
+      {% for month in simulation_duration_range %}
+        <tr>
+          <td>{{ month }}</td>
+          <td>{{ demand['Product 1'][month - 1] }}</td>
+          <td>{{ demand['Product 2'][month - 1] }}</td>
+          <td>{{ demand['Product 3'][month - 1] }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+
+    <h2>Inventory</h2>
+    <table>
+      <tr>
+        <th>Month</th>
+        <th>Product 1</th>
+        <th>Product 2</th>
+        <th>Product 3</th>
+      </tr>
+      {% for month in simulation_duration_range %}
+        <tr>
+          <td>{{ month }}</td>
+          <td>{{ inventory['Product 1'][month - 1] }}</td>
+          <td>{{ inventory['Product 2'][month - 1] }}</td>
+          <td>{{ inventory['Product 3'][month - 1] }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+
+    <h2>Average Service Level</h2>
+    <p>{{ average_service_level }}</p>
+
+    <h2>Average Net Income</h2>
+    <p>{{ average_net_income }}</p>
+  </body>
+</html>
